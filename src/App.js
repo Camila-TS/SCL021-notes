@@ -1,23 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import Formulario from './components/Formulario.jsx';
+
+// import Parrafo from './components/Parrafo.jsx'
+// import Variables from './components/Variables.jsx';
+// import Eventos from './components/Eventos.jsx';
+// import Contador from './components/Contador.jsx';
+// import Notas from './components/Notas.jsx';
 
 function App() {
+
+  const logo = 'https://i.ibb.co/KxNFJPs/logo.png'
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>AnótalApp</h1>
+      <img src={ logo } alt='Logo'></img>
+      {/* <Parrafo />
+      <Variables />
+      <Eventos />
+      <Contador /> 
+      <Notas /> */}
+      <Formulario />
     </div>
   );
 }
