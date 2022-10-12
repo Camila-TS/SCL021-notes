@@ -3,12 +3,12 @@ import {
   BrowserRouter,
   Routes,
   Route,
-  Link,
 } from "react-router-dom";
 
 import Home from './views/home.jsx';
 import LogIn from './views/logIn.jsx';
 import Register from './views/register.jsx';
+import NoMatch from './views/noMatch.jsx';
 
 // import Formulario from './components/Formulario.jsx';
 // import Logo from './components/Logo.jsx';
@@ -24,29 +24,11 @@ export default function App() {
   return (
     <BrowserRouter>
       <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Log In</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
-          </ul>
-        </nav>
-
-        {/* A <Switch> looks through its children <Route>s and
-            renders the first one that matches the current URL. */}
         <Routes>
-          <Route path="/login" element={<LogIn />}>
-          </Route>
-          <Route path="/register" element={<Register />}>
-          </Route>
-          <Route path="/" element={<Home />}>
-          </Route>
+          <Route path="/login" element={<LogIn />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/" element={<Home />} />
+          <Route path="*" element={<NoMatch />} />
         </Routes>
       </div>
     </BrowserRouter>
