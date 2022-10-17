@@ -5,7 +5,7 @@ const Logo = () => {
     const logo = 'https://i.ibb.co/KxNFJPs/logo.png'
 
   return (
-    <img src={ logo } alt='Logo'></img>
+    <img src={ logo } alt='Logo' id="logo"></img>
   )
 }
 

@@ -1,0 +1,110 @@
+* {
+    padding: 0%;
+    margin: 0% auto;
+}
+
+.home {
+    background-image: url('../../img/pasto.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.home #logo {
+    width: 120px;
+    height: 120px;
+    margin-left: 42%;
+    margin-top: -35px;
+}
+
+textarea {
+    resize: none;
+}
+
+#square {
+    border: 4px solid black;
+    padding: 1px 2px;
+    width: 20px;
+    text-align: center;
+    font-weight: bolder;
+    font-size: larger;
+    border-radius: 2px;
+    margin-left: 94%;
+}
+
+.home img {
+    width: 300px;
+    height: 300px;
+    margin-top: 2%;
+}
+
+.form h2 {
+  margin-left: 30px;
+  margin-bottom: 10px;
+   }
+
+.form input {
+    margin-left: 20px;
+    padding: 10px;
+    background-color: #D2F0F4;
+}
+
+.form textarea {
+    margin-left: 20px;
+    margin-top: 10px;
+    background-color: #D2F0F4;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#addButton {
+    margin-left: 80px;
+    padding: 8px;
+    background-color: #D2F0F4;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(70px, auto);
+}
+
+.myNotes {
+
+}
+
+.notesTitle {
+    background-color: #D2F0F4;
+    width: 100px;
+    border-radius: 60px;
+    text-align: center;
+}
+
+.notesDate {
+    background-color: #D2F0F4;
+    width: 200px;
+    border-radius: 30px;
+    text-align: center;
+}
+
+.notesContent {
+    background-color: #D2F0F4;
+    width: 300px;
+    height: 70px;
+    border-radius: 30px;
+    
+}
+
+.editButton {
+    margin-left: 60px;
+    padding: 5px;
+    background-color: #D2F0F4;
+}
+
+.deleteButton {
+    margin-left: 50px;
+    padding: 5px;
+    background-color: #D2F0F4;
+}

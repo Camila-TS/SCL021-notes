@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/home.css';
 
 const Formulario = () => {
 
@@ -33,8 +34,8 @@ const Formulario = () => {
     }
 
   return (
-    <div>
-        <h2>Nueva Nota</h2>
+    <div className='form'>
+        <h2>Crear Nueva Nota</h2>
         <form onSubmit={ guardarDatos } >
             <input 
                type="text" 
@@ -52,23 +53,28 @@ const Formulario = () => {
                 >
                 </textarea>
             <br />
-            <button type='submit'>Agregar</button>
+            <button id="addButton" type='submit'>Agregar</button>
         </form>
-        <h2>Tus Notas</h2>
+        <h2>Mis Notas</h2>
+        <div className='wrapper' >
             {
                 lista.map((item, index) => (
-                    <div key={index}>
-                        <div>
+                    <div className='myNotes' key={index}>
+                        <div className='notesTitle' >
                             {item.nombreTitulo}
                         </div>
-                        <div>
+                        <div className='notesDate' >
+                        <span>17/10/2022 18:14 hrs</span>
+                        </div>
+                        <div className='notesContent' >
                         {item.nombreContenido}
                         </div>
-                        <button>Editar</button>
-                        <button>Eliminar</button>
+                        <button className='editButton'>Editar</button>
+                        <button className='deleteButton' >Eliminar</button>
                 </div>
                 ))
             }
+        </div>
     </div>
   )
 }

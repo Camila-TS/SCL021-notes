@@ -5,12 +5,11 @@ import {
 
 import Formulario from '../components/Formulario';
 import Logo from '../components/Logo';
+import '../styles/home.css';
 
 function Home() {
-    return <div>
-      <Link to="/login">Log In</Link>
-      <img src='https://i.ibb.co/znmDXMX/interface-decline-reject-close-delete-failed-square-icon-132985.png' alt='Cerrar sesión'></img>
-      <h2>Home</h2>
+    return <div className='home'>
+      <Link className="link" to="/login"><div id="square">X</div></Link>
     <Logo />
     <Formulario />
     </div>
