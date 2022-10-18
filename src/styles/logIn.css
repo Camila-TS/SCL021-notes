@@ -61,3 +61,11 @@ button {
     margin-right: 5px;
     margin-bottom: -3px;
 }
+
+@media only screen and (max-width: 600px) {
+
+}
+
+@media only screen and (min-width: 992px) {
+    
+}
