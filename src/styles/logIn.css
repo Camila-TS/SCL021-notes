@@ -28,6 +28,7 @@ margin-bottom: 10%;
     border-radius: 5px;
     width: 300px;
 }
+
 label {
     font-weight: bold;
 }
@@ -62,10 +63,12 @@ button {
     margin-bottom: -3px;
 }
 
-@media only screen and (max-width: 600px) {
-
+/* @media only screen and (max-width: 600px) {
+    .login form {
+        width: 200px;
+    }
 }
 
 @media only screen and (min-width: 992px) {
     
-}
+} */

@@ -61,13 +61,13 @@ const Formulario = () => {
                 lista.map((item, index) => (
                     <div className='myNotes' key={index}>
                         <div className='notesTitle' >
-                            {item.nombreTitulo}
+                            <span className='titleSpan'>{item.nombreTitulo}</span>
                         </div>
                         <div className='notesDate' >
                         <span>17/10/2022 18:14 hrs</span>
                         </div>
                         <div className='notesContent' >
-                        {item.nombreContenido}
+                        <span className='contentSpan'>{item.nombreContenido}</span>
                         </div>
                         <button className='editButton'>Editar</button>
                         <button className='deleteButton' >Eliminar</button>

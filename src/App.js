@@ -23,7 +23,7 @@ import NoMatch from './views/noMatch.jsx';
 export default function App() {
   return (
     <BrowserRouter>
-      <div>
+      <div className='routes'>
         <Routes>
           <Route path="/login" element={<LogIn />} />
           <Route path="/register" element={<Register />} />

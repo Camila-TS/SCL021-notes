@@ -7,7 +7,7 @@
     background-image: url('../../img/pasto.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%; /* 100vh */
+    height: 100vh; 
     padding-top: 20px;
 }
 
@@ -78,8 +78,16 @@ textarea {
 .notesTitle {
     background-color: #D2F0F4;
     width: 100px;
-    border-radius: 60px;
+    height: 50px;
+    border-radius: 60% 60% 0 0;
     text-align: center;
+    overflow-x: scroll;
+}
+
+.titleSpan {
+    display: block;
+    margin: 0 auto;
+    margin-top: 0.8vw;
 }
 
 .notesDate {
@@ -94,7 +102,14 @@ textarea {
     width: 300px;
     height: 70px;
     border-radius: 30px;
-    
+    text-align: center;
+    overflow-x: scroll;
+}
+
+.contentSpan {
+    display: block;
+    margin: 0 auto;
+    margin-top: 1.5vw;
 }
 
 .editButton {
@@ -114,7 +129,7 @@ textarea {
     .home #logo {
         width: 120px;
         height: 120px;
-        margin-left: 28%;
+        margin-left: 35%;
         margin-top: -35px;
     }
 
@@ -123,7 +138,10 @@ textarea {
         grid-template-columns: repeat(1, 1fr);
         grid-gap: 10px;
         grid-auto-rows: minmax(70px, auto);
-        margin-left: -50px;
+    }
+
+    .notesContent {
+        width: 270px;        
     }
 
     #square {
@@ -134,7 +152,7 @@ textarea {
         font-weight: bolder;
         font-size: larger;
         border-radius: 2px;
-        margin-left: 78%;
+        margin-left: 90%;
         margin-top: -12px;
     }
 }
@@ -145,5 +163,17 @@ textarea {
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 10px;
         grid-auto-rows: minmax(70px, auto);
+    }
+
+    #square {
+        border: 4px solid black;
+        padding: 1px 2px;
+        width: 20px;
+        text-align: center;
+        font-weight: bolder;
+        font-size: larger;
+        border-radius: 2px;
+        margin-left: 97%;
+        margin-top: -12px;
     }
 }

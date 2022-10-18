@@ -12,6 +12,7 @@ function Home() {
       <Link className="link" to="/login"><div id="square">X</div></Link>
     <Logo />
     <Formulario />
+    {/* <footer>Footer</footer> */}
     </div>
   }
 
