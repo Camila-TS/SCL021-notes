@@ -7,6 +7,10 @@ const Formulario = () => {
     const [contenido, setContenido] = React.useState('')
     const [lista, setLista] = React.useState([])
 
+    const action = Date.now();
+    const objectAction = new Date(action);
+    // console.log(objectAction.toLocaleString() + " hrs")
+
     const guardarDatos = (e) => {
         e.preventDefault()
 
@@ -39,6 +43,7 @@ const Formulario = () => {
         <form onSubmit={ guardarDatos } >
             <input 
                type="text" 
+               id='titleInput'
                placeholder='Ingresa el título de tu nota'
                onChange={ (e) => setTitulo(e.target.value) }
             />
@@ -64,7 +69,7 @@ const Formulario = () => {
                             <span className='titleSpan'>{item.nombreTitulo}</span>
                         </div>
                         <div className='notesDate' >
-                        <span>17/10/2022 18:14 hrs</span>
+                        <span>{objectAction.toLocaleString()} hrs</span>
                         </div>
                         <div className='notesContent' >
                         <span className='contentSpan'>{item.nombreContenido}</span>
