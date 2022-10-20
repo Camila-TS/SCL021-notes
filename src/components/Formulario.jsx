@@ -1,5 +1,7 @@
 import React from 'react'
+
 import '../styles/home.css';
+import { createNote } from '../firebase/firebase.js'
 
 const Formulario = () => {
 
@@ -58,7 +60,7 @@ const Formulario = () => {
                 >
                 </textarea>
             <br />
-            <button id="addButton" type='submit'>Agregar</button>
+            <button id="addButton" type='submit' onClick={ createNote }>Agregar</button>
         </form>
         <h2>Mis Notas</h2>
         <div className='wrapper' >

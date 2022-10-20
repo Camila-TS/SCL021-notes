@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 // import { GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -23,7 +23,7 @@ const db = getFirestore(app);
 
 // Crear colección
 
-async function createNote() {
+export async function createNote() {
 
   const titleInput = document.getElementById('titleInput');
   const titleText = titleInput.value
@@ -36,19 +36,33 @@ async function createNote() {
       content: noteText,
       date: Date.now()
     });
-    console.log("Document written with ID: ", docRef.id, createClickNote());
+    console.log("Document written with ID: ", docRef.id);
   } catch (e) {
     console.error("Error adding document: ", e);
   }
 }
 
-//Función para crear los eventos de click para crear nota
-function createClickNote() {
-  const buttonNote = document.getElementById('addButton');
-  buttonNote.addEventListener('click', createNote);
-}
 
-// recuperar toda la colección creo q no la necesitaré...
+// recuperar toda la colección
+
+const allNotes = async () => {
+  try {
+    // const notes = [];
+    const querySnapshot = await getDocs(collection(db, 'notes'));
+    querySnapshot.forEach((doc) => {
+    console.log(`${doc.id} => ${doc.data()}`);
+    // querySnapshot.forEach((noteDoc) => {
+    //   const note = noteDoc.data();
+    //   note.id = noteDoc.id;
+    //  notes.push(note);
+    });
+    // return notes;
+  } catch (e) {
+    console.log('Error get all documents', e.message);
+  }
+};
+console.log (allNotes)
+
 // const querySnapshot = await getDocs(collection(db, "notes"));
 // querySnapshot.forEach((doc) => {
 //   console.log(`${doc.id} => ${doc.data()}`);
