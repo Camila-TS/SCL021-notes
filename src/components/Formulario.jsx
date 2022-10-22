@@ -1,7 +1,7 @@
 import React from 'react'
 
 import '../styles/home.css';
-import { createNote } from '../firebase/firebase.js'
+import { createNote, allNotes } from '../firebase/firebase.js'
 
 const Formulario = () => {
 
@@ -13,7 +13,7 @@ const Formulario = () => {
     const objectAction = new Date(action);
     // console.log(objectAction.toLocaleString() + " hrs")
 
-    const guardarDatos = (e) => {
+    const guardarDatos =  async (e) => {
         e.preventDefault()
 
         if(!titulo.trim()){
@@ -28,16 +28,24 @@ const Formulario = () => {
 
         console.log('procesando datos...' + titulo + ' ' + contenido)
 
-        setLista([
-            ...lista, 
-            {nombreTitulo: titulo, nombreContenido: contenido}
-        ])
+        let newNote = await createNote()
+        let notesObtained = await allNotes()
+        setLista([...notesObtained])
+        
+        // setLista([
+        //     ...lista, 
+        //     {nombreTitulo: titulo, nombreContenido: contenido}
+        // ])
 
         e.target.reset()
         setTitulo('')
         setContenido('')
 
     }
+
+    // useEffect(() => {
+    //     setLista(allNotes)
+    //   }, []);
 
   return (
     <div className='form'>
@@ -60,7 +68,7 @@ const Formulario = () => {
                 >
                 </textarea>
             <br />
-            <button id="addButton" type='submit' onClick={ createNote }>Agregar</button>
+            <button id="addButton" type='submit' >Agregar</button>
         </form>
         <h2>Mis Notas</h2>
         <div className='wrapper' >

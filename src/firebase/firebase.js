@@ -36,32 +36,34 @@ export async function createNote() {
       content: noteText,
       date: Date.now()
     });
-    console.log("Document written with ID: ", docRef.id);
+    // console.log("Document written with ID: ", docRef.id);
+    return docRef.id;
   } catch (e) {
-    console.error("Error adding document: ", e);
+    console.error("Error adding document: ", e); 
+    throw e;
   }
 }
 
 
 // recuperar toda la colección
 
-const allNotes = async () => {
+ export const allNotes = async () => {
   try {
-    // const notes = [];
+    const notes = [];
     const querySnapshot = await getDocs(collection(db, 'notes'));
-    querySnapshot.forEach((doc) => {
-    console.log(`${doc.id} => ${doc.data()}`);
-    // querySnapshot.forEach((noteDoc) => {
-    //   const note = noteDoc.data();
-    //   note.id = noteDoc.id;
-    //  notes.push(note);
+    querySnapshot.forEach((noteDoc) => {
+      const note = noteDoc.data();
+      note.id = noteDoc.id;
+     notes.push(note);
+     console.log(note)
     });
-    // return notes;
+    return notes;
+    // console.log(notes)
   } catch (e) {
     console.log('Error get all documents', e.message);
   }
 };
-console.log (allNotes)
+// console.log (allNotes)
 
 // const querySnapshot = await getDocs(collection(db, "notes"));
 // querySnapshot.forEach((doc) => {
