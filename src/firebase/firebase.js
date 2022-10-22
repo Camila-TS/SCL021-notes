@@ -30,11 +30,15 @@ export async function createNote() {
   const noteTextArea = document.getElementById('note');
   const noteText = noteTextArea.value
 
+  const action = Date.now();
+    const objectAction = new Date(action);
+    objectAction.toLocaleString()
+
   try {
     const docRef = await addDoc(collection(db, "notes"), {
       title: titleText,
       content: noteText,
-      date: Date.now()
+      date: objectAction.toLocaleString()//Date.now()
     });
     // console.log("Document written with ID: ", docRef.id);
     return docRef.id;
@@ -56,14 +60,13 @@ export async function createNote() {
       note.id = noteDoc.id;
      notes.push(note);
      console.log(note)
+    //  console.log(notes)
     });
     return notes;
-    // console.log(notes)
   } catch (e) {
     console.log('Error get all documents', e.message);
   }
 };
-// console.log (allNotes)
 
 // const querySnapshot = await getDocs(collection(db, "notes"));
 // querySnapshot.forEach((doc) => {

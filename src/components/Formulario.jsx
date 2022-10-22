@@ -11,7 +11,7 @@ const Formulario = () => {
 
     const action = Date.now();
     const objectAction = new Date(action);
-    // console.log(objectAction.toLocaleString() + " hrs")
+    objectAction.toLocaleString()
 
     const guardarDatos =  async (e) => {
         e.preventDefault()
@@ -31,7 +31,9 @@ const Formulario = () => {
         let newNote = await createNote()
         let notesObtained = await allNotes()
         setLista([...notesObtained])
-        
+        console.log(newNote)//es el id
+        console.log(notesObtained)//array de objetos, lista de notas
+
         // setLista([
         //     ...lista, 
         //     {nombreTitulo: titulo, nombreContenido: contenido}
@@ -42,10 +44,6 @@ const Formulario = () => {
         setContenido('')
 
     }
-
-    // useEffect(() => {
-    //     setLista(allNotes)
-    //   }, []);
 
   return (
     <div className='form'>
@@ -76,13 +74,13 @@ const Formulario = () => {
                 lista.map((item, index) => (
                     <div className='myNotes' key={index}>
                         <div className='notesTitle' >
-                            <span className='titleSpan'>{item.nombreTitulo}</span>
+                            <span className='titleSpan'>{item.title}</span>
                         </div>
                         <div className='notesDate' >
-                        <span>{objectAction.toLocaleString()} hrs</span>
+                        <span>{item.date} hrs</span>
                         </div>
                         <div className='notesContent' >
-                        <span className='contentSpan'>{item.nombreContenido}</span>
+                        <span className='contentSpan'>{item.content}</span>
                         </div>
                         <button className='editButton'>Editar</button>
                         <button className='deleteButton' >Eliminar</button>
