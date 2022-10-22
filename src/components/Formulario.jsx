@@ -9,6 +9,18 @@ const Formulario = () => {
     const [contenido, setContenido] = React.useState('')
     const [lista, setLista] = React.useState([])
 
+    const inputRef = React.useRef(null);
+    const textareaRef = React.useRef(null);
+
+    const onClickButton = () => {
+        // const { value } = inputRef.current; // input value
+        // const { value } = textareaRef.current; // input value
+		// console.log(inputValue) //undefined
+        // console.log(textareaValue) //undefined
+        console.log(inputRef.current.value) //título
+        console.log(textareaRef.current.value) //contenido
+	}
+
     const action = Date.now();
     const objectAction = new Date(action);
     objectAction.toLocaleString()
@@ -54,6 +66,7 @@ const Formulario = () => {
                id='titleInput'
                placeholder='Ingresa el título de tu nota'
                onChange={ (e) => setTitulo(e.target.value) }
+               ref={inputRef}
             />
             <br />
             <textarea 
@@ -63,10 +76,11 @@ const Formulario = () => {
                 cols="30" 
                 rows="10"
                 onChange={ (e) => setContenido(e.target.value) }
+                ref={textareaRef}
                 >
                 </textarea>
             <br />
-            <button id="addButton" type='submit' >Agregar</button>
+            <button id="addButton" type='submit' onClick={onClickButton}>Agregar</button>
         </form>
         <h2>Mis Notas</h2>
         <div className='wrapper' >
@@ -75,12 +89,14 @@ const Formulario = () => {
                     <div className='myNotes' key={index}>
                         <div className='notesTitle' >
                             <span className='titleSpan'>{item.title}</span>
+                            <span className='titleSpan'>{inputRef.current?.value}</span>
                         </div>
                         <div className='notesDate' >
                         <span>{item.date} hrs</span>
                         </div>
                         <div className='notesContent' >
                         <span className='contentSpan'>{item.content}</span>
+                        <span className='contentSpan'>{textareaRef.current?.value}</span>
                         </div>
                         <button className='editButton'>Editar</button>
                         <button className='deleteButton' >Eliminar</button>

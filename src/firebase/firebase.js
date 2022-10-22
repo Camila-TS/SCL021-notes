@@ -22,7 +22,7 @@ const db = getFirestore(app);
 
 
 // Crear colección
-
+// tengo que pasar como parámetros inputRef y textareaRef
 export async function createNote() {
 
   const titleInput = document.getElementById('titleInput');
@@ -36,6 +36,7 @@ export async function createNote() {
 
   try {
     const docRef = await addDoc(collection(db, "notes"), {
+      //era title: titleText, content: noteText, Intenté con inputRef, textareaRef
       title: titleText,
       content: noteText,
       date: objectAction.toLocaleString()//Date.now()
