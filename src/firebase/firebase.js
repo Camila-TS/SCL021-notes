@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 // import { GoogleAuthProvider } from "firebase/auth";
-import { getFirestore, collection, addDoc, getDocs } from "firebase/firestore";
+import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
 
 
 const firebaseConfig = {
@@ -22,13 +22,12 @@ const db = getFirestore(app);
 
 
 // Crear colección
-// tengo que pasar como parámetros inputRef y textareaRef
-export async function createNote() {
+export async function createNote(title, content) {
 
-  const titleInput = document.getElementById('titleInput');
-  const titleText = titleInput.value
-  const noteTextArea = document.getElementById('note');
-  const noteText = noteTextArea.value
+  // const titleInput = document.getElementById('titleInput');
+  // const titleText = titleInput.value
+  // const noteTextArea = document.getElementById('note');
+  // const noteText = noteTextArea.value
 
   const action = Date.now();
     const objectAction = new Date(action);
@@ -36,10 +35,10 @@ export async function createNote() {
 
   try {
     const docRef = await addDoc(collection(db, "notes"), {
-      //era title: titleText, content: noteText, Intenté con inputRef, textareaRef
-      title: titleText,
-      content: noteText,
-      date: objectAction.toLocaleString()//Date.now()
+      
+      title: title,
+      content: content,
+      date: objectAction.toLocaleString()
     });
     // console.log("Document written with ID: ", docRef.id);
     return docRef.id;
@@ -73,3 +72,34 @@ export async function createNote() {
 // querySnapshot.forEach((doc) => {
 //   console.log(`${doc.id} => ${doc.data()}`);
 // });
+
+//Borrar Nota
+// await deleteDoc(doc(db, "notes", "id"));
+
+export const deleteNote = async (idNote) => {
+  try {
+    await deleteDoc(doc(db, 'notes', idNote));
+    console.log('Se eliminó el documento');
+  } catch (e) {
+    console.error('Error delete document', e.message);
+  }
+};
+
+//Editar Nota
+// const notesRef = doc(db, "notes", "idNote");
+
+// // Set the "content" field of the note 'idNote'
+// await updateDoc(notesRef, {
+//   content: true
+// });
+
+// export const updateNote = async (idNote, message) => {
+//   try {
+//     const docRef = doc(db, 'notes', idNote);
+//     await updateDoc(docRef, {
+//       content: message,
+//     });
+//   } catch (e) {
+//     console.log('Error update document', e.message);
+//   }
+// };
