@@ -79,6 +79,7 @@ export async function createNote(title, content) {
 export const deleteNote = async (idNote) => {
   try {
     await deleteDoc(doc(db, 'notes', idNote));
+    document.getElementById(idNote).remove()
     console.log('Se eliminó el documento');
   } catch (e) {
     console.error('Error delete document', e.message);
@@ -93,13 +94,14 @@ export const deleteNote = async (idNote) => {
 //   content: true
 // });
 
-// export const updateNote = async (idNote, message) => {
-//   try {
-//     const docRef = doc(db, 'notes', idNote);
-//     await updateDoc(docRef, {
-//       content: message,
-//     });
-//   } catch (e) {
-//     console.log('Error update document', e.message);
-//   }
-// };
+export const updateNote = async (idNote, message) => {
+  try {
+    const docRef = doc(db, 'notes', idNote);
+    await updateDoc(docRef, {
+      content: message,
+    });
+    // document.getElementById(idNote).update()
+  } catch (e) {
+    console.log('Error update document', e.message);
+  }
+};

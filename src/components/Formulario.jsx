@@ -8,6 +8,7 @@ const Formulario = () => {
     const [titulo, setTitulo] = React.useState('')
     const [contenido, setContenido] = React.useState('')
     const [lista, setLista] = React.useState([])
+    
 
     const action = Date.now();
     const objectAction = new Date(action);
@@ -30,19 +31,22 @@ const Formulario = () => {
 
         let newNote = await createNote(titulo, contenido)
         let notesObtained = await allNotes()
-        // let noteDeleted = await deleteNote()
-        // const notesObtainedFiltered = notesObtained.filter(item => item.id !== id)
-        // setLista(notesObtainedFiltered)
 
         setLista([...notesObtained])
         console.log(newNote)//es el id
         console.log(notesObtained)//array de objetos, lista de notas
-        // console.log(noteDeleted)//undefined
 
         e.target.reset()
         setTitulo('')
         setContenido('')
 
+    }
+
+    const handleUpdateNote = async (e) => {
+        const textareaNote = e.target.previousSibling;
+        const noteId = textareaNote.getAttribute('item.id');
+        const msg = textareaNote.value;
+        await updateNote(noteId, msg);
     }
 
     React.useEffect ( () => {
@@ -80,7 +84,7 @@ const Formulario = () => {
         <div className='wrapper' >
             {
                 lista.map((item, index) => (
-                    <div className='myNotes' key={index}>
+                    <div id={ item.id } className='myNotes' key={index}>
                         <div className='notesTitle' >
                             <span className='titleSpan'>{item.title}</span>
                         </div>
@@ -90,7 +94,8 @@ const Formulario = () => {
                         <div className='notesContent' >
                         <span className='contentSpan'>{item.content}</span>
                         </div>
-                        <button  className='editButton'>Editar</button>
+                        <button onClick={ () => handleUpdateNote(item.id) } className='editButton'>Editar</button>
+                        {/* <button onClick={ () => updateNote(item.id) } className='updateEditButton'>Guardar <br /> edición</button> */}
                         <button onClick={ () => deleteNote(item.id) } className='deleteButton' >Eliminar</button>
                 </div>
                 ))
