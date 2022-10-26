@@ -100,7 +100,6 @@ export const updateNote = async (idNote, message) => {
     await updateDoc(docRef, {
       content: message,
     });
-    // document.getElementById(idNote).update()
   } catch (e) {
     console.log('Error update document', e.message);
   }

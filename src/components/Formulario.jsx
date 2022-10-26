@@ -8,7 +8,18 @@ const Formulario = () => {
     const [titulo, setTitulo] = React.useState('')
     const [contenido, setContenido] = React.useState('')
     const [lista, setLista] = React.useState([])
-    
+    const [editable, setEditable] = React.useState(false)
+
+    const changeEditable = () => {
+        setEditable(!editable)
+    };
+
+    //opción2 
+    //const changeEditable = (item) => { // botón Editar tb tendría que ir item en lugar de item.id
+    //     setEditable(true)
+    //     setLista(item.content)
+    //     setId(item.id)  // arriba const [id, setId] = React.useState('')
+    // };
 
     const action = Date.now();
     const objectAction = new Date(action);
@@ -40,13 +51,6 @@ const Formulario = () => {
         setTitulo('')
         setContenido('')
 
-    }
-
-    const handleUpdateNote = async (e) => {
-        const textareaNote = e.target.previousSibling;
-        const noteId = textareaNote.getAttribute('item.id');
-        const msg = textareaNote.value;
-        await updateNote(noteId, msg);
     }
 
     React.useEffect ( () => {
@@ -92,10 +96,16 @@ const Formulario = () => {
                         <span>{item.date} hrs</span>
                         </div>
                         <div className='notesContent' >
+                        {editable ? (
+                            <>
+                                <textarea value={ item.contenido } onChange={ (e) => setContenido(e.target.value) } cols="30" rows="10"></textarea>
+                                <button onClick={ () => updateNote(item.id, item.content) } className='updateEditButton'>Guardar</button>
+                            </>
+                        ) : (      
                         <span className='contentSpan'>{item.content}</span>
+                        )}
                         </div>
-                        <button onClick={ () => handleUpdateNote(item.id) } className='editButton'>Editar</button>
-                        {/* <button onClick={ () => updateNote(item.id) } className='updateEditButton'>Guardar <br /> edición</button> */}
+                        <button onClick={ () => changeEditable(item.id) } className='editButton'>Editar</button>
                         <button onClick={ () => deleteNote(item.id) } className='deleteButton' >Eliminar</button>
                 </div>
                 ))
