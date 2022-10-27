@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 // import { GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
-import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "firebase/auth";
+import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -20,7 +20,8 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore(app);
 
-
+// Inicializa la autenticación de usuarios
+const auth = getAuth(app);
 
 // Crear colección
 export async function createNote(title, content) {
@@ -117,7 +118,7 @@ export const accessGoogle = () => {
       localStorage.setItem('uid', uid);
       localStorage.setItem('token', accessToken);
       localStorage.setItem('email', email);
-      window.location.href = '/';
+      // window.location.href = '/'; //react router dom, useHistory o useNavigate
     })
     .catch((error) => {
       console.log(error);
@@ -144,6 +145,20 @@ export const accessGoogle = () => {
 //     // const credential = GoogleAuthProvider.credentialFromError(error);
 //     // ...
 //   });
+
+export function userActive() {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      // https://firebase.google.com/docs/reference/js/firebase.User
+      const uid = user.uid;
+      console.log(uid);
+    } else {
+      console.log('No esta logueado');
+      // window.location.href = '/login'; react router dom useNavigate
+    }
+  });
+}
 
 // Cerrar sesión
 export const logout = async () => {

@@ -1,8 +1,18 @@
 import {useState} from 'react'
 
-const Nota = ({item, deleteNote, updateNote, notEditable}) => {
+const Nota = ({item, deleteNote, updateNote, updatingNotes}) => {
     const [editable, setEditable] = useState(false)
     const [contenido, setContenido] = useState('')
+ 
+
+    const notEditable = () => {
+        setEditable(false)
+    }
+
+  const handleUpdating = async (id, content) => {
+    await updateNote(id, content)
+    await updatingNotes()
+  }
 
     return (<>
         <div id={item.id} className='myNotes'>
@@ -16,7 +26,7 @@ const Nota = ({item, deleteNote, updateNote, notEditable}) => {
                 {editable ? (
                     <>
                         <textarea value={contenido} onChange={(e) => setContenido(e.target.value)} cols="30" rows="10"></textarea>
-                        <button onClick={() => { updateNote(item.id, contenido); notEditable(); }} className='updateEditButton'>Guardar</button>
+                        <button onClick={() => { handleUpdating(item.id, contenido); notEditable(); }} className='updateEditButton'>Guardar</button>
                     </>
                 ) : (
                     <span className='contentSpan'>{item.content}</span>

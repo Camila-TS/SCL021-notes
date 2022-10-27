@@ -10,26 +10,6 @@ const Formulario = () => {
     const [titulo, setTitulo] = React.useState('')
     const [contenido, setContenido] = React.useState('')
     const [lista, setLista] = React.useState([])
-    const [editable, setEditable] = React.useState(false)
-
-    const changeEditable = (id) => {
-        setEditable(!editable)
-        console.log(id)
-    };
-
-    // const changeEditable = (id) => {
-    //     //asociar botón con textarea que quiero que sea editable
-    //     //...
-    //     //asociar el id con el value del botón
-    //     //value={item.id} let buttonValue = {item.id}
-    //     if (id === e.target.value) {
-    //     setEditable(!editable)
-    //     }  
-    // };
-
-    const notEditable = () => {
-        setEditable(false)
-    }
 
     const action = Date.now();
     const objectAction = new Date(action);
@@ -51,16 +31,19 @@ const Formulario = () => {
         console.log('procesando datos...' + titulo + ' ' + contenido)
 
         let newNote = await createNote(titulo, contenido)
-        let notesObtained = await allNotes()
-
-        setLista([...notesObtained])
+        updatingNotes()
         console.log(newNote)//es el id
-        console.log(notesObtained)//array de objetos, lista de notas
+        // console.log(notesObtained)//array de objetos, lista de notas
 
         e.target.reset()
         setTitulo('')
         setContenido('')
 
+    }
+
+    const updatingNotes = async () => {
+        let notesObtained = await allNotes()
+        setLista([...notesObtained])
     }
 
     React.useEffect(() => {
@@ -98,7 +81,7 @@ const Formulario = () => {
             <div className='wrapper' >
                 {
                     lista.map((item, index) => (
-                        <Nota item={item} key={index} setContenido={setContenido} updateNote={updateNote} changeEditable={changeEditable} notEditable={notEditable} deleteNote={deleteNote} />
+                        <Nota updatingNotes={updatingNotes} item={item} key={index} setContenido={setContenido} updateNote={updateNote} deleteNote={deleteNote} />
                     ))
                 }
             </div>
