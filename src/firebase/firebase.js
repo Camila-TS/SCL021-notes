@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 // import { GoogleAuthProvider } from "firebase/auth";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { GoogleAuthProvider, getAuth, signInWithPopup, signOut } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -102,5 +103,58 @@ export const updateNote = async (idNote, message) => {
     });
   } catch (e) {
     console.log('Error update document', e.message);
+  }
+};
+
+//Autentificación con Google
+const provider = new GoogleAuthProvider();
+
+export const accessGoogle = () => {
+  const auth = getAuth();
+  signInWithPopup(auth, provider)
+    .then((result) => {
+      const { user: { accessToken, email, uid } } = result;
+      localStorage.setItem('uid', uid);
+      localStorage.setItem('token', accessToken);
+      localStorage.setItem('email', email);
+      window.location.href = '/';
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+};
+
+// const auth = getAuth();
+// signInWithPopup(auth, provider)
+//   .then((result) => {
+//     // This gives you a Google Access Token. You can use it to access the Google API.
+//     const credential = GoogleAuthProvider.credentialFromResult(result);
+//     const token = credential.accessToken;
+//     // The signed-in user info.
+//     const user = result.user;
+//     window.location.href = '/';
+//   }).catch((error) => {
+//     // Handle Errors here.
+//       console.log(error);
+//     // const errorCode = error.code;
+//     // const errorMessage = error.message;
+//     // // The email of the user's account used.
+//     // const email = error.customData.email;
+//     // // The AuthCredential type that was used.
+//     // const credential = GoogleAuthProvider.credentialFromError(error);
+//     // ...
+//   });
+
+// Cerrar sesión
+export const logout = async () => {
+  const auth = getAuth(app);
+  try {
+    await signOut(auth);
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+    localStorage.removeItem('uid');
+    window.location.href = '/login';
+  } catch (e) {
+    // console.error(e);
   }
 };
