@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getFirestore, collection, addDoc, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { GoogleAuthProvider, getAuth, signInWithPopup, onAuthStateChanged, signOut } from "firebase/auth";
 
-
 const firebaseConfig = {
     apiKey: "AIzaSyCvZDLjhVmewF3q-WJkLQ3c7atMDRdfWOE",
     authDomain: "anotalapp.firebaseapp.com",
@@ -25,11 +24,6 @@ const auth = getAuth(app);
 
 // Crear colección
 export async function createNote(title, content) {
-
-  // const titleInput = document.getElementById('titleInput');
-  // const titleText = titleInput.value
-  // const noteTextArea = document.getElementById('note');
-  // const noteText = noteTextArea.value
 
   const action = Date.now();
     const objectAction = new Date(action);
@@ -70,13 +64,7 @@ export async function createNote(title, content) {
   }
 };
 
-// const querySnapshot = await getDocs(collection(db, "notes"));
-// querySnapshot.forEach((doc) => {
-//   console.log(`${doc.id} => ${doc.data()}`);
-// });
-
 //Borrar Nota
-// await deleteDoc(doc(db, "notes", "id"));
 
 export const deleteNote = async (idNote) => {
   try {
@@ -89,12 +77,6 @@ export const deleteNote = async (idNote) => {
 };
 
 //Editar Nota
-// const notesRef = doc(db, "notes", "idNote");
-
-// // Set the "content" field of the note 'idNote'
-// await updateDoc(notesRef, {
-//   content: true
-// });
 
 export const updateNote = async (idNote, message) => {
   try {
@@ -118,44 +100,23 @@ export const accessGoogle = () => {
       localStorage.setItem('uid', uid);
       localStorage.setItem('token', accessToken);
       localStorage.setItem('email', email);
-      // window.location.href = '/'; //react router dom, useHistory o useNavigate
     })
     .catch((error) => {
       console.log(error);
     });
 };
 
-// const auth = getAuth();
-// signInWithPopup(auth, provider)
-//   .then((result) => {
-//     // This gives you a Google Access Token. You can use it to access the Google API.
-//     const credential = GoogleAuthProvider.credentialFromResult(result);
-//     const token = credential.accessToken;
-//     // The signed-in user info.
-//     const user = result.user;
-//     window.location.href = '/';
-//   }).catch((error) => {
-//     // Handle Errors here.
-//       console.log(error);
-//     // const errorCode = error.code;
-//     // const errorMessage = error.message;
-//     // // The email of the user's account used.
-//     // const email = error.customData.email;
-//     // // The AuthCredential type that was used.
-//     // const credential = GoogleAuthProvider.credentialFromError(error);
-//     // ...
-//   });
-
-export function userActive() {
+export function userActive(callback) {
   onAuthStateChanged(auth, (user) => {
     if (user) {
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/firebase.User
       const uid = user.uid;
+      callback() //es la f(x) flecha que estoy declarando en logIn useEffect
       console.log(uid);
+      console.log('Sí estoy logueado')
     } else {
       console.log('No esta logueado');
-      // window.location.href = '/login'; react router dom useNavigate
     }
   });
 }
@@ -168,7 +129,9 @@ export const logout = async () => {
     localStorage.removeItem('token');
     localStorage.removeItem('email');
     localStorage.removeItem('uid');
-    window.location.href = '/login';
+    console.log('Sesión cerrada')
+    window.location.href = '/login'
+
   } catch (e) {
     // console.error(e);
   }

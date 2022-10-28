@@ -2,7 +2,7 @@ import React from 'react';
 import {
   BrowserRouter,
   Routes,
-  Route,
+  Route
 } from "react-router-dom";
 
 import Home from './views/home.jsx';
@@ -21,6 +21,7 @@ import NoMatch from './views/noMatch.jsx';
 // import Notas from './components/Notas.jsx';
 
 export default function App() {
+  
   return (
     <BrowserRouter>
       <div className='routes'>
@@ -35,28 +36,3 @@ export default function App() {
   );
 }
 
-
-// function App() {
-
-//   // const logo = 'https://i.ibb.co/KxNFJPs/logo.png'
-
-//   return (
-//     <div className="App">
-//       <Logo />
-//       <h1>AnótalApp</h1>
-//       {/* <img src={ logo } alt='Logo'></img> */}
-//       {/* <Saludo persona='Pedro' edad={30} />
-//       <Saludo persona='Catalina' edad={27} />
-//       <Saludo persona='Baltazar' edad={23} /> */}
-//       {/* <Parrafo />
-//       <Variables />
-//       <Eventos />
-//       <Contador /> 
-//       <Notas /> */}
-//       <Formulario />
-//       {/* <Home /> */}
-//     </div>
-//   );
-// }
-
-// export default App;
