@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {
-  Link, useNavigate
+   useNavigate
 } from "react-router-dom";
 
 import Logo from '../components/Logo';
@@ -19,13 +19,17 @@ function LogIn() {
 
   return <div className='login'>
     <Logo />
+    <div className='wrapper'>
       <h2>Inicia Sesión</h2>
-      <input type="text" placeholder='Correo electrónico' /><br />
+      <h3>¡Bienvenid@ a la aplicación donde aterrizarás tus ideas!</h3><br />
+    
+      {/* <input type="text" placeholder='Correo electrónico' /><br />
       <input type="text" placeholder='Contraseña' /><br />
       <button><Link className="link" id="continuar" to="/">Continuar</Link></button><br />
-      <label>O</label><br />
+      <label>O</label><br /> */}
       <button onClick={() => accessGoogle()}><img src="https://i.ibb.co/VJtRcj1/icons8-logo-de-google-48.png" alt="Logo Google" id="iconoGoogle"/>Continuar con Google</button><br />
-      <button><Link className="link" to="/register">Registrarse para <br /> crear cuenta</Link><br /></button>
+      {/* <button><Link className="link" to="/register">Registrarse para <br /> crear cuenta</Link><br /></button> */}
+      </div>
   </div>
 }
 
