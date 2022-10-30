@@ -1,3 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam&display=swap');
+
+h3 {
+    font-family: 'Kalam', cursive;
+    color: rgb(92, 172, 199);
+    text-shadow: 0.1em 0.1em 0.2em #ffde59;
+}
+
 .login {
  display: flex;
  flex-direction: column;
