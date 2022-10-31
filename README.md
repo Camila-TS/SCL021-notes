@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# AnótalApp
+![logo](./img/logo.png)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Índice
 
-## Available Scripts
+* [1. Resumen del proyecto](#1-resumen-del-proyecto)
+* [2. Historias de usuario](#2-historias-de-usuario)
+* [3. Prototipo de baja](#3-prototipo-de-baja)
+* [4. Prototipo de alta](#4-prototipo-de-alta)
+* [5. Resultado final](#5-resultado-final)
 
-In the project directory, you can run:
+## 1. Resumen del proyecto
 
-### `npm start`
+AnótalApp es una aplicación para tomar notas 📝, nos permite crear, editar, eliminar y consultarlas en cualquier momento.
+Muchas veces necesitamos tomar notas de direcciones, teléfonos, URLs o cualquier actividad que no queramos olvidar 💡 y qué mejor que guardarlas en AnótalApp ☁️, donde podrás consultarlas cuando quieras y donde quieras, sin perderlas 🙌🏼.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Para utilizarla, ingresa por [acá](https://anotalapp.web.app/) y accede con tu cuenta de Google.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Este proyecto es una Web App responsive y utilicé React y Firebase. Además la aplicación es una SPA.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## 2. Historias de usuario
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 1. Yo como usuaria debo poder crear una cuenta y autenticarme usando login de Google para acceder a mis notas.
+- 2. Yo como usuaria quiero tomar nota para no depender de mi mala memoria y tener presente en todo momento los apuntes o cosas importantes que antes escribía en papel.
+- 3. Yo como usuaria quiero leer mis notas para recordar lo que escribí antes.
+- 4. Yo como usuaria quiero editar notas para poder modificar lo que escribí antes.
+- 5. Yo como usuaria quiero borrar una nota para no volver a verla.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 3. Prototipo de baja
 
-### `npm run eject`
+![Prototipo de baja](./img/PrototipoBaja.jpg)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 4. Prototipo de alta
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![Prototipo de alta](./img/prototipoAlta.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 5. Resultado final
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![login](./img/login.png)
+![home](./img/home.png)
