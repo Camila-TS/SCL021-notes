@@ -39,5 +39,4 @@ Este proyecto es una Web App responsive y utilicé React y Firebase. Además la 
 
 ## 5. Resultado final
 
-![login](./img/login.png)
-![home](./img/home.png)
+![app](./img/app.png)
