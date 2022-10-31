@@ -22,11 +22,11 @@ Este proyecto es una Web App responsive y utilicé React y Firebase. Además la 
 
 ## 2. Historias de usuario
 
-- 1. Yo como usuaria debo poder crear una cuenta y autenticarme usando login de Google para acceder a mis notas.
-- 2. Yo como usuaria quiero tomar nota para no depender de mi mala memoria y tener presente en todo momento los apuntes o cosas importantes que antes escribía en papel.
-- 3. Yo como usuaria quiero leer mis notas para recordar lo que escribí antes.
-- 4. Yo como usuaria quiero editar notas para poder modificar lo que escribí antes.
-- 5. Yo como usuaria quiero borrar una nota para no volver a verla.
+1. Yo como usuaria debo poder crear una cuenta y autenticarme usando login de Google para acceder a mis notas.
+2. Yo como usuaria quiero tomar nota para no depender de mi mala memoria y tener presente en todo momento los apuntes o cosas importantes que antes escribía en papel.
+3. Yo como usuaria quiero leer mis notas para recordar lo que escribí antes.
+4. Yo como usuaria quiero editar notas para poder modificar lo que escribí antes.
+5. Yo como usuaria quiero borrar una nota para no volver a verla.
 
 
 ## 3. Prototipo de baja
