@@ -81,7 +81,7 @@ const Formulario = () => {
             <div className='wrapper' >
                 {
                     lista.map((item, index) => (
-                        <Nota updatingNotes={updatingNotes} item={item} key={index} setContenido={setContenido} updateNote={updateNote} deleteNote={deleteNote} />
+                        <Nota updatingNotes={updatingNotes} item={item} key={index} updateNote={updateNote} deleteNote={deleteNote} />
                     ))
                 }
             </div>
